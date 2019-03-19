@@ -144,7 +144,7 @@ impl SaneSearch {
         Ok(())
     }
 
-    pub fn consume_writer(&self) {
+    pub fn consume_writer(&mut self) {
         let index_writer = self.index_writer.take().expect("Cannot consume an index writer without an index writer");
     }
     
