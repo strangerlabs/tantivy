@@ -1,0 +1,31 @@
+{
+  "name": "tantivy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx electron-build-env neon build tantivy",
+    "start": "nodemon -e \"rs toml\" -x \"neon build --release\""
+  },
+  "author": "Stranger Labs (stjohn [at] strangerlabs [dot] io)",
+  "license": "MIT",
+  "devDependencies": {
+    "electron-build-env": "^0.2",
+    "electron-rebuild": "^1.8.2",
+    "neon-cli": "^0.2.0",
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "node-pre-gyp": "^0.12.0"
+  },
+  "files": [
+    "native/index.node"
+  ],
+  "binary": {
+    "module_name": "index",
+    "module_path": "./native",
+    "host": "https://gitlab.com/strangerlabs/sanity",
+    "pkg_path": "."
+  }
+}
