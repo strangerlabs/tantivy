@@ -1,4 +1,3 @@
-#![feature(try_trait)]
 // #![deny(warnings)]
 #[macro_use]
 extern crate neon;
