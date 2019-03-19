@@ -60,6 +60,7 @@ let document2 = {
 
 // addDoc may block if the pipeline is full
 search.addDoc(JSON.stringify(document))
+search.addDoc(JSON.stringify(document2))
 
 // Commit
 // Commit will create a point in which `Tantivy` will be able to rollback to 
