@@ -23,7 +23,7 @@ mod js_top_docs;
 use js_top_docs::JsTopDocs;
 
 register_module!(mut cx, {
-    cx.export_class::<JsSearch>("SaneSearch")?;
+    cx.export_class::<JsSearch>("Search")?;
     cx.export_class::<JsSchemaBuilder>("SchemaBuilder")?;
     cx.export_class::<JsTopDocs>("TopDocs")?;
     cx.export_class::<JsQueryParser>("QueryParser")?;
