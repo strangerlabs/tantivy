@@ -1,4 +1,4 @@
 build
-temp_test_data
 node_modules
 workspace.code-workspace
+data
