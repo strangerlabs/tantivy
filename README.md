@@ -4,7 +4,7 @@
 
 ## NOTE
 
-This project shares the same name for the Rust crate [tantivy](https://github.com/tantivy-search/tantivy). This project intends to provide bindings to the Rust crate for Javascript and therefore has the same name.`
+This project shares the same name for the Rust crate [tantivy](https://github.com/tantivy-search/tantivy). This project intends to provide bindings to the Rust crate for Javascript and therefore has the same name.
 
 ### Prerequisites
 
