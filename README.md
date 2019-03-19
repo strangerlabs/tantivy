@@ -1,4 +1,4 @@
-# Tantivy
+# Tantivy JS
 
 ## Tantivy bindings for Javascript
 
@@ -8,9 +8,9 @@ This project shares the same name for the Rust crate [tantivy](https://github.co
 
 ### Prerequisites
 
-In addition to the build tools needed to development `sanity` you will need:
+To development `tantivy` for JS you will need:
 
-- At least `rustc 1.33.0-stable`
+- At least `rustc 1.34.0-nightly`
 - The Neon [platform dependences](https://neon-bindings.com/docs/getting-started#install-node-build-tools/)  
 
 ### Build

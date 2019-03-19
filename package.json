@@ -25,7 +25,7 @@
   "binary": {
     "module_name": "index",
     "module_path": "./native",
-    "host": "https://gitlab.com/strangerlabs/sanity",
+    "host": "https://github.com/strangerlabs/tantivy",
     "pkg_path": "."
   }
 }
