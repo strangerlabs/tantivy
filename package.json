@@ -7,8 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "neon build --release",
     "build-electron": "npx electron-build-env neon build tantivy",
-    "start": "nodemon -e \"rs toml\" -x \"neon build --release\"",
-    "install": "npm run build-electron"
+    "start": "nodemon -e \"rs toml\" -x \"neon build --release\""
   },
   "author": "Stranger Labs",
   "contributors": [
