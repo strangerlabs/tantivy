@@ -1,3 +1,3 @@
-const addon = require('./lib');
+const addon = require('./native');
 
 module.exports = addon;
