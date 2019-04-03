@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "neon build --release",
     "build-electron": "npx electron-build-env neon build tantivy",
+    "install": "node-pre-gyp install --fallback-to-build=false || neon build --release",
+    "package": "node-pre-gyp package",
+    "upload-binary": "node-pre-gyp package && node-pre-gyp-github publish",
     "start": "nodemon -e \"rs toml\" -x \"neon build --release\""
   },
   "author": "Stranger Labs",
@@ -25,10 +28,15 @@
     "nodemon": "^1.18.10"
   },
   "dependencies": {
-    "node-pre-gyp": "^0.12.0"
+    "@amilajack/node-pre-gyp": "github:amilajack/node-pre-gyp#neon-compat",
+    "node-pre-gyp-github": "^1.4.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/strangerlabs/tantivy.git"
   },
   "files": [
-    "native/index.node"
+    "native"
   ],
   "binary": {
     "module_name": "index",
