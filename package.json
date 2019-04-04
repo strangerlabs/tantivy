@@ -42,6 +42,8 @@
     "module_name": "index",
     "module_path": "./native",
     "host": "https://github.com/strangerlabs/tantivy/releases/download/",
+    "remote_path": "{version}",
+    "package_name": "{node_abi}-{platform}-{arch}.tar.gz",
     "pkg_path": "."
   }
 }
