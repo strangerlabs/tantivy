@@ -41,7 +41,7 @@
   "binary": {
     "module_name": "index",
     "module_path": "./native",
-    "host": "https://github.com/strangerlabs/tantivy",
+    "host": "https://github.com/strangerlabs/tantivy/releases/download/",
     "pkg_path": "."
   }
 }
