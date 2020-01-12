@@ -97,7 +97,8 @@ declare_types! {
                 
                 let sanesearch = this.borrow(&guard);
                 let index = sanesearch.index.as_ref().expect("facetSearch called on no index");
-                let searcher = index.searcher();
+                let reader = index.reader().expect("Unable to acquire reader");
+                let searcher = reader.searcher();
                 let default_fields = sanesearch.default_search_fields.as_ref().unwrap();
                 // let counts = collector.harvest();
 
@@ -232,7 +233,7 @@ declare_types! {
             for handle in vec.iter() {
                 let field: Handle<JsNumber> = handle.downcast().unwrap();
                 let field = field.value();
-                let field: Field = Field(field as u32);
+                let field: Field = Field::from_field_id(field as u32);
                 fields.push(field);
             }
 
@@ -252,7 +253,7 @@ declare_types! {
                 let guard = cx.lock();
                 let instance = this.borrow(&guard);
                 let schema = instance.schema.as_ref().expect("no schema found");
-                println!("SCHEMA: {:#?}", schema.fields());
+                println!("SCHEMA: {:#?}", schema.fields().collect::<Vec<_>>());
             }
             Ok(cx.undefined().upcast())
         }
@@ -263,7 +264,8 @@ declare_types! {
                 let guard = cx.lock();
                 let instance = this.borrow(&guard);
                 let index = instance.index.as_ref().expect("no index found");
-                let searcher = index.searcher();
+                let reader = index.reader().unwrap();
+                let searcher = reader.searcher();
                 searcher.num_docs()
             };
 

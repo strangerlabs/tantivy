@@ -50,7 +50,7 @@ declare_types! {
 
         method forField(mut cx) {
             let number = cx.argument::<JsNumber>(0)?.value();
-            let field = Field(number as u32);
+            let field = Field::from_field_id(number as u32);
             // let arg = arg.downcast::<JsNumber>().unwrap();
 
             {

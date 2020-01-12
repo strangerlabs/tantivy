@@ -35,8 +35,8 @@ declare_types! {
                 let option: String = neon_serde::from_value(&mut cx, *handle)?;
                 let new_options = match option.as_ref() {
                     "TEXT" => tantivy::schema::TEXT,
-                    "STORED" => tantivy::schema::STORED,
-                    "STRING" => tantivy::schema::STRING,
+                    "STORED" => tantivy::schema::STORED.into(),
+                    "STRING" => tantivy::schema::STRING.into(),
                     _ => panic!("Unknown text option")
                 };
                 text_options = new_options | text_options.clone();
@@ -50,7 +50,7 @@ declare_types! {
                 borrowed_self.add_text_field(&field_name, text_options)
             };
 
-            Ok(cx.number(field.0).upcast())
+            Ok(cx.number(field.field_id()).upcast())
         }
 
         method addFacetField(mut cx) {
@@ -63,7 +63,7 @@ declare_types! {
                 borrowed_self.add_facet_field(&field_name)
             };   
 
-            Ok(cx.number(field.0).upcast())
+            Ok(cx.number(field.field_id()).upcast())
         }
     }
 }

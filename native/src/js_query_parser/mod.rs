@@ -36,7 +36,7 @@ declare_types! {
                 for handle in vec.iter() {
                     let field: Handle<JsNumber> = handle.downcast().unwrap();
                     let field = field.value();
-                    let field: Field = Field(field as u32);
+                    let field: Field = Field::from_field_id(field as u32);
                     fields.push(field);
                 }
                 fields.clone()
@@ -45,7 +45,7 @@ declare_types! {
             let parser = { 
                 let guard = cx.lock();
                 let mut instance = sane_search.borrow(&guard);
-                let index = instance.index.as_ref().expect("Called QueryParse constructer on an unintialized index");
+                let index = instance.index.as_ref().expect("Called QueryParser constructor on an uninitialized index");
                 let parser = SaneQueryParser::new(index, fields);
                 parser
             };

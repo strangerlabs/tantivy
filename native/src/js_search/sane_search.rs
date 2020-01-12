@@ -21,8 +21,8 @@ pub struct SaneSearch {
 
 impl SaneSearch {
 
-    pub fn simple_search<'a>(&self, query: &'a str) -> Result<Vec<String>, &str> {
-        let (index, schema, default_search_fields) = {
+    pub fn simple_search(&self, query: &str) -> Result<Vec<String>, &str> {
+        let (index, schema, default_search_fields): (&Index,_,_) = {
             let (index, schema, default_search_fields);
 
             if let Some(s) = &self.schema {
@@ -49,7 +49,8 @@ impl SaneSearch {
         let query_parser = QueryParser::for_index(&index, default_search_fields.to_vec());
         let query = query_parser.parse_query(query).unwrap();
 
-        let searcher = index.searcher();
+        let reader = index.reader().map_err(|_| "Unable to acquire reader")?;
+        let searcher = reader.searcher();
 
         // let mut top_collector = TopCollector::with_limit(10);
         let top_docs = searcher.search(&query, &TopDocs::with_limit(10)).unwrap();
@@ -66,7 +67,8 @@ impl SaneSearch {
     pub fn top_search(&self, query: &Box<Query>, collector: &TopDocs) -> Vec<(Score, String)> {
         let index = self.index.as_ref().expect("Cannot search without an index");
         let schema = self.schema.as_ref().expect("Cannot search without a schema");
-        let searcher = index.searcher();
+        let reader = index.reader().expect("Unable to acquire reader");
+        let searcher = reader.searcher();
 
         let top_docs: Vec<(Score, DocAddress)> =  searcher.search(query, collector).unwrap();
         
@@ -138,9 +140,9 @@ impl SaneSearch {
         Ok(())
     }
 
+    #[deprecated]
     pub fn load_searchers(&self) -> Result<(), tantivy::Error> {
-        let index = self.index.as_ref().expect("Cannot load searchers without an index");
-        index.load_searchers()?;
+        println!("This function does nothing now");
         Ok(())
     }
 
