@@ -2,7 +2,6 @@
 #[macro_use]
 extern crate neon;
 extern crate tantivy;
-extern crate serde_derive;
 
 use neon::prelude::*;
 
